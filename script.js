@@ -29,6 +29,7 @@ function actualizarListaClientes() {
         const enlace = document.createElement('a');
         enlace.href = '#';  // Aquí puedes poner la URL del perfil del cliente si la tienes
         enlace.textContent = `${cliente.nombre} - ${cliente.correo}`;
+        // Añadir evento de clic al enlace para mostrar detalles del cliente
         enlace.addEventListener('click', function(event) {
             event.preventDefault();
             mostrarDetallesCliente(cliente);  // Función para mostrar detalles del cliente
@@ -46,8 +47,9 @@ function actualizarListaClientes() {
 
 // Función para mostrar detalles del cliente (ejemplo básico)
 function mostrarDetallesCliente(cliente) {
-    // Aquí podrías redirigir a una nueva página con los detalles del cliente
-    // Por ejemplo, podrías usar window.location.href = 'perfil-cliente.html?id=' + cliente.id;
+    // Aquí puedes redirigir a una nueva página con detalles del cliente
+    // Ejemplo: window.location.href = 'perfil-cliente.html?id=' + cliente.id;
+    // Por ahora, mostramos una alerta con los detalles básicos
     alert(`Detalles de ${cliente.nombre}:\nCorreo: ${cliente.correo}`);
 }
 
@@ -93,3 +95,11 @@ function actualizarListaCitas() {
         listaCitas.appendChild(li);
     });
 }
+
+// Inicializar lista de clientes al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Simulación de clientes preexistentes
+    agregarCliente('Juan Pérez', 'juan@example.com');
+    agregarCliente('María Rodríguez', 'maria@example.com');
+    agregarCliente('Carlos Gómez', 'carlos@example.com');
+});
