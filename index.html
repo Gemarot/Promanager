@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProManager - Gestión de Clientes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ProManager</h1>
+            <nav>
+                <ul>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="#citas">Citas</a></li>
+                    <li><a href="#recursos">Recursos Financieros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="clientes">
+            <div class="container">
+                <h2>Gestión de Clientes</h2>
+                <form id="form-clientes">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                    <button type="submit">Agregar Cliente</button>
+                </form>
+                <ul id="lista-clientes">
+                    <!-- Aquí se añadirán dinámicamente los clientes -->
+                </ul>
+            </div>
+        </section>
+
+        <section id="citas">
+            <div class="container">
+                <h2>Programación de Citas</h2>
+                <form id="form-citas">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+                    <label for="cliente">Cliente:</label>
+                    <select id="cliente" name="cliente" required>
+                        <!-- Aquí se añadirán dinámicamente los clientes -->
+                    </select>
+                    <button type="submit">Programar Cita</button>
+                </form>
+                <ul id="lista-citas">
+                    <!-- Aquí se añadirán dinámicamente las citas programadas -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ProManager. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
