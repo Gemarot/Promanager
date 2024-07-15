@@ -25,14 +25,32 @@ function actualizarListaClientes() {
     selectCliente.innerHTML = '<option value="">Seleccione un cliente</option>';
     clientes.forEach(cliente => {
         const li = document.createElement('li');
-        li.textContent = `${cliente.nombre} - ${cliente.correo}`;
+        // Crear un enlace por cada cliente
+        const enlace = document.createElement('a');
+        enlace.href = '#';  // Aquí puedes poner la URL del perfil del cliente si la tienes
+        enlace.textContent = `${cliente.nombre} - ${cliente.correo}`;
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            mostrarDetallesCliente(cliente);  // Función para mostrar detalles del cliente
+        });
+        li.appendChild(enlace);
         listaClientes.appendChild(li);
-        
+
         // Actualizar opciones del select de citas
         const option = document.createElement('option');
         option.textContent = cliente.nombre;
         option.value = cliente.nombre;
         selectCliente.appendChild(option);
+    });
+}
+
+// Función para mostrar detalles del cliente (ejemplo básico)
+function mostrarDetallesCliente(cliente) {
+    // Aquí podrías redirigir a una nueva página con los detalles del cliente
+    // Por ejemplo, podrías usar window.location.href = 'perfil-cliente.html?id=' + cliente.id;
+    alert(`Detalles de ${cliente.nombre}:\nCorreo: ${cliente.correo}`);
+}
+
     });
 }
 
