@@ -8,6 +8,7 @@ const inputCorreo = document.getElementById('correo');
 const inputFecha = document.getElementById('fecha');
 const inputHora = document.getElementById('hora');
 const selectCliente = document.getElementById('cliente');
+const headCitas = document.getElementById('head-citas');
 
 // Array para almacenar clientes y citas (simulación)
 let clientes = [];
@@ -29,10 +30,10 @@ function actualizarListaClientes() {
         const enlace = document.createElement('a');
         enlace.href = '#';  // Aquí puedes poner la URL del perfil del cliente si la tienes
         enlace.textContent = `${cliente.nombre} - ${cliente.correo}`;
-        // Añadir evento de clic al enlace para mostrar detalles del cliente
+        // Añadir evento de clic al enlace para guardar en head citas
         enlace.addEventListener('click', function(event) {
             event.preventDefault();
-            mostrarDetallesCliente(cliente);  // Función para mostrar detalles del cliente
+            guardarEnHeadCitas(cliente);  // Función para guardar en head citas
         });
         li.appendChild(enlace);
         listaClientes.appendChild(li);
@@ -45,12 +46,12 @@ function actualizarListaClientes() {
     });
 }
 
-// Función para mostrar detalles del cliente (ejemplo básico)
-function mostrarDetallesCliente(cliente) {
-    // Aquí puedes redirigir a una nueva página con detalles del cliente
-    // Ejemplo: window.location.href = 'perfil-cliente.html?id=' + cliente.id;
-    // Por ahora, mostramos una alerta con los detalles básicos
-    alert(`Detalles de ${cliente.nombre}:\nCorreo: ${cliente.correo}`);
+// Función para guardar en head citas
+function guardarEnHeadCitas(cliente) {
+    // Guardar datos del cliente en head citas (simulación)
+    headCitas.textContent = `Cliente seleccionado: ${cliente.nombre} - ${cliente.correo}`;
+    headCitas.setAttribute('data-cliente-nombre', cliente.nombre);
+    headCitas.setAttribute('data-cliente-correo', cliente.correo);
 }
 
 // Evento submit para el formulario de clientes
@@ -102,4 +103,16 @@ document.addEventListener('DOMContentLoaded', function() {
     agregarCliente('Juan Pérez', 'juan@example.com');
     agregarCliente('María Rodríguez', 'maria@example.com');
     agregarCliente('Carlos Gómez', 'carlos@example.com');
+});
+
+// Evento clic para el encabezado de citas
+headCitas.addEventListener('click', function() {
+    const nombre = headCitas.getAttribute('data-cliente-nombre');
+    const correo = headCitas.getAttribute('data-cliente-correo');
+    if (nombre && correo) {
+        // Redirigir a una nueva página con detalles del cliente
+        window.location.href = `perfil-cliente.html?nombre=${nombre}&correo=${correo}`;
+    } else {
+        alert('No se ha seleccionado ningún cliente.');
+    }
 });
