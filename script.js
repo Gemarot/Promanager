@@ -51,25 +51,6 @@ function mostrarDetallesCliente(cliente) {
     alert(`Detalles de ${cliente.nombre}:\nCorreo: ${cliente.correo}`);
 }
 
-    });
-}
-
-// Función para programar una cita
-function programarCita(fecha, hora, cliente) {
-    citas.push({ fecha, hora, cliente });
-    actualizarListaCitas();
-}
-
-// Función para actualizar la lista de citas en el DOM
-function actualizarListaCitas() {
-    listaCitas.innerHTML = '';
-    citas.forEach(cita => {
-        const li = document.createElement('li');
-        li.textContent = `${cita.fecha} - ${cita.hora} con ${cita.cliente}`;
-        listaCitas.appendChild(li);
-    });
-}
-
 // Evento submit para el formulario de clientes
 formClientes.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -96,3 +77,19 @@ formCitas.addEventListener('submit', function(event) {
         alert('Por favor, completa todos los campos.');
     }
 });
+
+// Función para programar una cita
+function programarCita(fecha, hora, cliente) {
+    citas.push({ fecha, hora, cliente });
+    actualizarListaCitas();
+}
+
+// Función para actualizar la lista de citas en el DOM
+function actualizarListaCitas() {
+    listaCitas.innerHTML = '';
+    citas.forEach(cita => {
+        const li = document.createElement('li');
+        li.textContent = `${cita.fecha} - ${cita.hora} con ${cita.cliente}`;
+        listaCitas.appendChild(li);
+    });
+}
